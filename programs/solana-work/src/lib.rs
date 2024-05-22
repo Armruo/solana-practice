@@ -5,7 +5,6 @@ declare_id!("DKh62tAeLiwUJhnxN1zCxycJa9pVAHY5RRTqJ2XrMP7A");
 
 #[program]
 pub mod solana_work {
-    use anchor_lang::{solana_program::stake::instruction::create_account, system_program::CreateAccount};
 
     use super::*;
 
@@ -24,12 +23,12 @@ pub mod solana_work {
     pub fn create_system_account(ctx: Context<CreateSystemAccount>) -> Result<()> {
         msg!("Creating a system account ...");
 
-        let new_pub_key: str = &ctx.accounts.new_acount.key().to_string();
+        let new_pub_key: str = &ctx.accounts.new_account.key().to_string();
         msg!("  New public key will be: {}", new_pub_key);
 
         let ctx = CpiContext::new(
-            program = ctx.accounts.system_program.to_account_info(), 
-            accounts = CreateAccount {
+            ctx.accounts.system_program.to_account_info(), 
+            CreateAccount {
                 from: ctx.accounts.payer.to_account_info(),
                 to: ctx.accounts.new_account.to_account_info(),
             },
