@@ -1,2 +1,2 @@
 # solana-practice
-solana学习实践笔记
+solana学习与实战记录
