@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { SolanaWork } from "../target/types/solana_work";
+import {SolanaWork} from "../target/types/solana_work";
 
 describe("solana-work", () => {
 

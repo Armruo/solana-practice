@@ -5,14 +5,15 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-solana_work = "BqLqm3KGicFQfr9tGeuXGbHrRZV95voXEECHphxCxicW"
+# solana_work = "BqLqm3KGicFQfr9tGeuXGbHrRZV95voXEECHphxCxicW"
+solana_work = "DKh62tAeLiwUJhnxN1zCxycJa9pVAHY5RRTqJ2XrMP7A"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
 cluster = "http://127.0.0.1:8899"
-wallet = "~/.config/solana/solana-work/id.json"
+wallet = "~/.config/solana/id.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
