@@ -6,7 +6,7 @@ skip-lint = false
 
 [programs.localnet]
 # solana_work = "BqLqm3KGicFQfr9tGeuXGbHrRZV95voXEECHphxCxicW"
-solana_work = "DKh62tAeLiwUJhnxN1zCxycJa9pVAHY5RRTqJ2XrMP7A"
+solana_work = "Bv33hU1UuzxBbtB3EXST7d39hFQfBA3aY6NYqYLMtEv1"
 
 [registry]
 url = "https://api.apr.dev"

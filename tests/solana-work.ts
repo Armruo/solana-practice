@@ -19,7 +19,7 @@ describe("solana-work", () => {
     .initialize()
     .rpc();
 
-    console.log("Tx signature: ", tx);
+    console.log("initialize(): Tx Signature: ", tx);
   });
 
   it("Say Hello!", async() => {
