@@ -4,7 +4,7 @@ use anchor_spl::token::{self, Token, TokenAccount};
 declare_id!("4i6RFtsQTaPVSAgnJBwa7qE3mTD1xGTzRMiERN5fVYKF");
 
 #[program]
-pub mod pda_sharing_insecure {
+pub mod pda_sharing_secure {
     use super::*;
 
     pub fn withdraw_tokens(ctx: Context<WithdrawTokens>) -> Result<()> {
