@@ -1,3 +1,4 @@
 ﻿.anchor/program-logs
 .anchor/test-ledger
 target
+node_modules
