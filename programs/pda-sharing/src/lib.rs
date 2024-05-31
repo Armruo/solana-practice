@@ -9,7 +9,12 @@ pub mod pda_sharing_secure {
 
     pub fn withdraw_tokens(ctx: Context<WithdrawTokens>) -> Result<()> {
         let amount = ctx.accounts.vault.amount;
-        let seeds = &[ctx.accounts.pool.mint.as_ref(), &[ctx.accounts.pool.bump]];
+        let seeds = 
+        &[
+            ctx.accounts.pool.mint.as_ref(), 
+            &[ctx.accounts.pool.bump]
+        ];
+
         token::transfer(ctx.accounts.transfer_ctx().with_signer(&[seeds]), amount)
     }
 }
@@ -43,3 +48,5 @@ pub struct TokenPool {
     withdraw_destination: Pubkey,
     bump: u8,
 }
+
+
