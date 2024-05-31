@@ -1,39 +1,21 @@
 import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
-import { SolanaWork } from "../target/types/solana_work";
+import { CreateAccount } from "../target/types/create_account";
 import { Connection, Keypair, SystemProgram } from "@solana/web3.js";
-import { assert } from "chai";
+//import { assert } from "chai";
 
-describe("solana-work", () => {
+describe("create-account", () => {
 
   // Configure the client to use the local cluster.
   // Configure the Anchor provider & load the program IDL
   // The IDL gives you a typescript module
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
-  const program = anchor.workspace.SolanaWork as Program<SolanaWork>;
+  const program = anchor.workspace.CreateAccount as Program<CreateAccount>;
+
 
   const wallet = provider.wallet as anchor.Wallet
   const connection = provider.connection
-
-  it("Is initialized!", async () => {
-    // Add your test here.
-    const tx = await program.methods
-    .initialize()
-    .rpc();
-
-    console.log("initialize(): Tx Signature: ", tx);
-  });
-
-  it("Say Hello!", async() => {
-    // Just run Anchor's IDL method to build a transaction!
-    await program.methods
-    .hello()
-    .accounts({})
-    .rpc();
-
-  });
-
   it("Create the System Account", async () => {
     // 为新账户生成一个新keypair
     const newKeypair = new Keypair()
@@ -48,11 +30,14 @@ describe("solana-work", () => {
     .rpc()
 
     const lamports = await connection.getMinimumBalanceForRentExemption(0)
-    const accountInfo = await connection.getAccountInfo(newKeypair.publicKey)
-
+    const accountInfo = await connection.getAccountInfo(newKeypair.publicKey);
+    console.log("account info:{}", accountInfo);
     // 检查账户
-    assert((accountInfo.owner = SystemProgram.programId))
-    assert(accountInfo.lamports === lamports)
+    expect(accountInfo.owner.toBase58).toEqual(program.programId.toBase58);
+    //assert.equal(accountInfo.owner.toBase58, program.programId.toBase58);
+    //assert((accountInfo.owner = SystemProgram.programId))
+    expect(accountInfo.lamports).toEqual(lamports);
+    //assert.equal(accountInfo.lamports, lamports);
 
   })
 
