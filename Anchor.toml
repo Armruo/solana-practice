@@ -4,16 +4,33 @@
 resolution = true
 skip-lint = false
 
+[programs."http://127.0.0.1:8899"]
+anchor-audit = "BE1mtSmbhskGKZYfiYKDjGYKyp2godCSv3wLcE82AJHx"
+token-2022 = "3SxJcNcZqvv6z2NeFdXJEuEXpnQRcETzpfjRmLrP4hTA"
+token-manager = "GLknBnP2n78ynbQZmxrUb9mdB7PF79V3No9J8cAv4QgP"
+
 [programs.localnet]
-solana_work = "Bv33hU1UuzxBbtB3EXST7d39hFQfBA3aY6NYqYLMtEv1"
+counter = "J4LNY3CyFpHQUimgo6PcQdxHgHv72wWXEudUdKEnPc9y"
+create-account = "24eWx51qhKcWp4of9nry9LcqLD87a6uibcPxL2o1RQnU"
+token-creator = "6p7S3KFH9zsiUkPmJrUo2XfZi23k8BSmuJ3BjDo6AXVf"
+token-minter = "D2fVoPrqMGXaXxykUa9amd5FKcuumpUAG5dnzsaBeoTX"
 
 [registry]
-url = "https://api.apr.dev"
+url = "http://127.0.0.1:8899"
 
 [provider]
 cluster = "http://127.0.0.1:8899"
-# cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+test = "../node_modules/.bin/nx run anchor:jest"
+
+[test]
+startup_wait = 5000
+shutdown_wait = 2000
+upgradeable = false
+
+[test.validator]
+bind_address = "127.0.0.1"
+ledger = ".anchor/test-ledger"
+rpc_port = 8899
