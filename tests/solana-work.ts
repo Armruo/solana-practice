@@ -13,6 +13,9 @@ describe("solana-work", () => {
   anchor.setProvider(provider);
   const program = anchor.workspace.SolanaWork as Program<SolanaWork>;
 
+  const wallet = provider.wallet as anchor.Wallet
+  const connection = provider.connection
+
   it("Is initialized!", async () => {
     // Add your test here.
     const tx = await program.methods
@@ -31,8 +34,6 @@ describe("solana-work", () => {
 
   });
 
-  const wallet = provider.wallet as anchor.Wallet
-  const connection = provider.connection
   it("Create the System Account", async () => {
     // 为新账户生成一个新keypair
     const newKeypair = new Keypair()
