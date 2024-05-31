@@ -4,7 +4,7 @@ use anchor_lang::solana_program::entrypoint::ProgramResult;
 declare_id!("DP5cBTW4WhpSLSaTzSPfaWHWg5Pji3oGxooXHC8Eu6VF");
 
 #[program]
-pub mod bump_seed_canonicalization_insecure {
+pub mod bump_seed_canonicalization_secure {
     use super::*;
 
     pub fn set_value(ctx: Context<BumpSeed>, key: u64, new_value: u64, bump: u8) -> ProgramResult {
