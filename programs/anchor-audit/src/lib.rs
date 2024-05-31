@@ -1,7 +1,6 @@
 use anchor_lang::prelude::*;
 use anchor_lang::solana_program::entrypoint::ProgramResult;
 use borsh::{BorshSerialize, BorshDeserialize};
-// use borsh::
 
 declare_id!("BE1mtSmbhskGKZYfiYKDjGYKyp2godCSv3wLcE82AJHx");
 
@@ -28,6 +27,7 @@ pub mod type_cosplay_secure {
 
 #[derive(Accounts)]
 pub struct UpdateUser<'info> {
+    /// CHECK:
     user: AccountInfo<'info>,
     authority: Signer<'info>,
 }
