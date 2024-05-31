@@ -3,34 +3,43 @@ use anchor_spl::token::{self, Token, TokenAccount};
 
 declare_id!("4i6RFtsQTaPVSAgnJBwa7qE3mTD1xGTzRMiERN5fVYKF");
 
-pub fn stake_tokens(ctx: Context<StakeTokens>, amount: u64) -> Result<()> {
-    // Logic to stake tokens
-    Ok(())
-}
+#[program]
+pub mod pda_sharing_insecure {
+    use super::*;
 
-pub fn withdraw_rewards(ctx: Context<WithdrawRewards>, amount: u64) -> Result<()> {
-    // Logic to withdraw rewards
-    Ok(())
-}
-
-#[derive(Accounts)]
-pub struct StakeTokens<'info> {
-    #[account(
-        mut, 
-        seeds = [b"staking_pool_pda"], 
-        bump
-    )]
-    staking_pool: AccountInfo<'info>,
-    // Other staking-related accounts
+    pub fn withdraw_tokens(ctx: Context<WithdrawTokens>) -> Result<()> {
+        let amount = ctx.accounts.vault.amount;
+        let seeds = &[ctx.accounts.pool.mint.as_ref(), &[ctx.accounts.pool.bump]];
+        token::transfer(ctx.accounts.transfer_ctx().with_signer(&[seeds]), amount)
+    }
 }
 
 #[derive(Accounts)]
-pub struct WithdrawRewards<'info> {
-    #[account(
-        mut, 
-        seeds = [b"staking_pool_pda"], 
-        bump
-    )]
-    rewards_pool: AccountInfo<'info>,
-    // Other rewards withdrawal-related accounts
+pub struct WithdrawTokens<'info> {
+    #[account(has_one = vault, has_one = withdraw_destination)]
+    pool: Account<'info, TokenPool>,
+    vault: Account<'info, TokenAccount>,
+    withdraw_destination: Account<'info, TokenAccount>,
+    authority: Signer<'info>,
+    token_program: Program<'info, Token>,
+}
+
+impl<'info> WithdrawTokens<'info> {
+    pub fn transfer_ctx(&self) -> CpiContext<'_, '_, '_, 'info, token::Transfer<'info>> {
+        let program = self.token_program.to_account_info();
+        let accounts = token::Transfer {
+            from: self.vault.to_account_info(),
+            to: self.withdraw_destination.to_account_info(),
+            authority: self.authority.to_account_info(),
+        };
+        CpiContext::new(program, accounts)
+    }
+}
+
+#[account]
+pub struct TokenPool {
+    vault: Pubkey,
+    mint: Pubkey,
+    withdraw_destination: Pubkey,
+    bump: u8,
 }
