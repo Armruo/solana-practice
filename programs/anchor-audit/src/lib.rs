@@ -20,6 +20,7 @@ pub mod type_cosplay_secure {
         if user.discriminant != AccountDiscriminant::User {
             return Err(ProgramError::InvalidAccountData);
         }
+        
         msg!("GM {}", user.authority);
         Ok(())
     }

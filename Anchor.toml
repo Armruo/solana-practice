@@ -6,6 +6,7 @@ skip-lint = false
 
 [programs."http://127.0.0.1:8899"]
 anchor-audit = "BE1mtSmbhskGKZYfiYKDjGYKyp2godCSv3wLcE82AJHx"
+pda-sharing = "4i6RFtsQTaPVSAgnJBwa7qE3mTD1xGTzRMiERN5fVYKF"
 token-2022 = "3SxJcNcZqvv6z2NeFdXJEuEXpnQRcETzpfjRmLrP4hTA"
 token-manager = "GLknBnP2n78ynbQZmxrUb9mdB7PF79V3No9J8cAv4QgP"
 
