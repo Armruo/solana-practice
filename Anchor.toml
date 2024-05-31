@@ -5,7 +5,6 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-# solana_work = "BqLqm3KGicFQfr9tGeuXGbHrRZV95voXEECHphxCxicW"
 solana_work = "Bv33hU1UuzxBbtB3EXST7d39hFQfBA3aY6NYqYLMtEv1"
 
 [registry]
@@ -13,6 +12,7 @@ url = "https://api.apr.dev"
 
 [provider]
 cluster = "http://127.0.0.1:8899"
+# cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
