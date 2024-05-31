@@ -48,5 +48,3 @@ pub struct TokenPool {
     withdraw_destination: Pubkey,
     bump: u8,
 }
-
-
