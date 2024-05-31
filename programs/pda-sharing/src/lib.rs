@@ -3,12 +3,12 @@ use anchor_spl::token::{self, Token, TokenAccount};
 
 declare_id!("4i6RFtsQTaPVSAgnJBwa7qE3mTD1xGTzRMiERN5fVYKF");
 
-pub fn stake_tokens(ctx: Context<StakeTokens>, amount: u64) -> ProgramResult {
+pub fn stake_tokens(ctx: Context<StakeTokens>, amount: u64) -> Result<()> {
     // Logic to stake tokens
     Ok(())
 }
 
-pub fn withdraw_rewards(ctx: Context<WithdrawRewards>, amount: u64) -> ProgramResult {
+pub fn withdraw_rewards(ctx: Context<WithdrawRewards>, amount: u64) -> Result<()> {
     // Logic to withdraw rewards
     Ok(())
 }
