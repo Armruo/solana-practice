@@ -6,6 +6,9 @@ skip-lint = false
 
 [programs."http://127.0.0.1:8899"]
 anchor-audit = "BE1mtSmbhskGKZYfiYKDjGYKyp2godCSv3wLcE82AJHx"
+arbitrary-cpi = "FUGzMaxx8ycKK2d83LKewVz8QL8q4kVyG6tsaAecE15f"
+bump-seed-canonicalization = "DP5cBTW4WhpSLSaTzSPfaWHWg5Pji3oGxooXHC8Eu6VF"
+closing_accounts = "Gh7895EyGjUcydewvx19EP6xFqS3Wptdq8k6pxgbU1XH"
 pda-sharing = "4i6RFtsQTaPVSAgnJBwa7qE3mTD1xGTzRMiERN5fVYKF"
 token-2022 = "3SxJcNcZqvv6z2NeFdXJEuEXpnQRcETzpfjRmLrP4hTA"
 token-manager = "GLknBnP2n78ynbQZmxrUb9mdB7PF79V3No9J8cAv4QgP"
