@@ -4,16 +4,37 @@
 resolution = true
 skip-lint = false
 
+[programs."http://127.0.0.1:8899"]
+anchor-audit = "BE1mtSmbhskGKZYfiYKDjGYKyp2godCSv3wLcE82AJHx"
+arbitrary-cpi = "FUGzMaxx8ycKK2d83LKewVz8QL8q4kVyG6tsaAecE15f"
+bump-seed-canonicalization = "DP5cBTW4WhpSLSaTzSPfaWHWg5Pji3oGxooXHC8Eu6VF"
+closing_accounts = "Gh7895EyGjUcydewvx19EP6xFqS3Wptdq8k6pxgbU1XH"
+pda-sharing = "4i6RFtsQTaPVSAgnJBwa7qE3mTD1xGTzRMiERN5fVYKF"
+token-2022 = "3SxJcNcZqvv6z2NeFdXJEuEXpnQRcETzpfjRmLrP4hTA"
+token-manager = "GLknBnP2n78ynbQZmxrUb9mdB7PF79V3No9J8cAv4QgP"
+
 [programs.localnet]
-solana_work_practice = "6gP86XwGHXuRU1yNdBWnwd9unPNuQjy3Sr7T3oe7aQbW"
+counter = "J4LNY3CyFpHQUimgo6PcQdxHgHv72wWXEudUdKEnPc9y"
+create-account = "24eWx51qhKcWp4of9nry9LcqLD87a6uibcPxL2o1RQnU"
+token-creator = "6p7S3KFH9zsiUkPmJrUo2XfZi23k8BSmuJ3BjDo6AXVf"
+token-minter = "D2fVoPrqMGXaXxykUa9amd5FKcuumpUAG5dnzsaBeoTX"
 
 [registry]
-url = "https://api.apr.dev"
+url = "http://127.0.0.1:8899"
 
 [provider]
-cluster = "Localnet"
-# cluster = "http://127.0.0.1:8899"
-wallet = "~/.config/solana/solana-work-practice/id.json"
+cluster = "http://127.0.0.1:8899"
+wallet = "~/.config/solana/id.json"
 
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+test = "../node_modules/.bin/nx run anchor:jest"
+
+[test]
+startup_wait = 5000
+shutdown_wait = 2000
+upgradeable = false
+
+[test.validator]
+bind_address = "127.0.0.1"
+ledger = ".anchor/test-ledger"
+rpc_port = 8899

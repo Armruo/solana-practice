@@ -1,0 +1,23 @@
+[package]
+name = "anchor-audit"
+version = "0.1.0"
+description = "Created with Anchor"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "anchor_audit"
+
+[features]
+default = []
+cpi = ["no-entrypoint"]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+
+[dependencies]
+anchor-spl = "0.30.0"
+anchor-lang = { version = "0.30.0", features= ["init-if-needed"]}
+borsh = "0.10.3"
+borsh-derive = "0.10.3"

@@ -1,7 +1,5 @@
-.anchor
-.DS_Store
+﻿.anchor/program-logs
+.anchor/test-ledger
 target
-**/*.rs.bk
 node_modules
-test-ledger
-.yarn
+node_modules
